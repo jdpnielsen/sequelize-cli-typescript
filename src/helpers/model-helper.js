@@ -108,7 +108,7 @@ module.exports = {
   },
 
   generateFileContent(args) {
-    return helpers.template.render('models/model.js', {
+    return helpers.template.render('models/model.ts', {
       name: args.name,
       attributes: this.transformAttributes(args.attributes),
       underscored: args.underscored,
