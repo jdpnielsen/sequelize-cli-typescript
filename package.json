@@ -1,7 +1,7 @@
 {
-  "name": "sequelize-cli",
-  "version": "6.2.0",
-  "description": "The Sequelize CLI",
+  "name": "sequelize-cli-typescript",
+  "version": "3.2.0",
+  "description": "The Sequelize CLI (TypeScript)",
   "bin": {
     "sequelize": "./lib/sequelize",
     "sequelize-cli": "./lib/sequelize"
@@ -60,11 +60,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/sequelize/cli.git"
+    "url": "git://github.com/douglas-treadwell/sequelize-cli-typescript.git"
   },
   "keywords": [
     "sequelize",
-    "cli"
+    "cli",
+    "typescript"
   ],
   "contributors": [
     {
@@ -78,13 +79,17 @@
     {
       "name": "Sushant Dhiman",
       "email": "sushantdhiman@outlook.com"
+    },
+    {
+      "name": "Douglas Treadwell",
+      "email": "douglas.treadwell@gmail.com"
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sequelize/cli/issues"
+    "url": "https://github.com/douglas-treadwell/sequelize-cli-typescript/issues"
   },
-  "homepage": "https://github.com/sequelize/cli",
+  "homepage": "https://github.com/douglas-treadwell/sequelize-cli-typescript",
   "engines": {
     "node": ">=10.0.0"
   }
