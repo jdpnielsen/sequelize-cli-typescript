@@ -9,7 +9,7 @@ module.exports = {
   },
 
   generateTableCreationFileContent(args) {
-    return helpers.template.render('migrations/create-table.js', {
+    return helpers.template.render('migrations/create-table.ts', {
       tableName: this.getTableName(args.name),
       attributes: helpers.model.transformAttributes(args.attributes),
       createdAt: args.underscored ? 'created_at' : 'createdAt',

@@ -43,8 +43,8 @@ module.exports = {
     );
   },
 
-  getFileExtension() {
-    return 'js';
+  getFileExtension () {
+    return 'ts';
   },
 
   addFileExtension(basename, options) {
