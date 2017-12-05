@@ -1,7 +1,7 @@
-'use strict';
+import { QueryInterface, SequelizeStatic } from 'sequelize';
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
+export = {
+  up: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
     await queryInterface.createTable('<%= tableName %>', {
       id: {
         allowNull: false,
@@ -10,9 +10,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
-      <% attributes.forEach(function(attribute) { %>
+      <% attributes.forEach(function (attribute) { %>
         <%= attribute.fieldName %>: {
-          type: Sequelize.<%= attribute.dataFunction ? `${attribute.dataFunction.toUpperCase()}(Sequelize.${attribute.dataType.toUpperCase()})` : attribute.dataValues ? `${attribute.dataType.toUpperCase()}(${attribute.dataValues})` : attribute.dataType.toUpperCase() %>
+          type: Sequelize.<%= attribute.dataFunction ? `${attribute.dataFunction.toUpperCase()}(Sequelize.${attribute.dataType.toUpperCase()})` : attribute.dataType.toUpperCase() %>
         },
       <% }) %>
 
@@ -28,7 +28,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
     await queryInterface.dropTable('<%= tableName %>');
   }
 };
