@@ -8,7 +8,9 @@ module.exports = {
       {
         beautify: true,
         indent_size: 2,
-        preserve_newlines: false,
+        preserve_newlines: true,
+        max_preserve_newlines: 2,
+        end_with_newline: true
       },
       options || {}
     );
