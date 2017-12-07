@@ -37,6 +37,12 @@ export async function getMigrator(type, args) {
     process.exit(1);
   }
 
+  let migratorPath = helpers.path.getPath(type);
+
+  if ( type === 'migration' ) {
+    migratorPath = helpers.path.getMigrationsCompiledPath();
+  }
+
   const sequelize = getSequelizeInstance();
   const migrator = new Umzug({
     storage: helpers.umzug.getStorage(type),
@@ -44,25 +50,19 @@ export async function getMigrator(type, args) {
     logging: helpers.view.log,
     migrations: {
       params: [sequelize.getQueryInterface(), Sequelize],
-      path: helpers.path.getPath(type),
-      pattern: /^(?!.*\.d\.ts$).*\.(cjs|js|ts)$/,
-    },
-  });
-
-  return sequelize
-    .authenticate()
-    .then(() => {
-      // Check if this is a PostgreSQL run and if there is a custom schema specified, and if there is, check if it's
-      // been created. If not, attempt to create it.
-      if (helpers.version.getDialectName() === 'pg') {
-        const customSchemaName = helpers.umzug.getSchema('migration');
-        if (customSchemaName && customSchemaName !== 'public') {
-          return sequelize.createSchema(customSchemaName);
+      path: migratorPath,
+      pattern: /\.js$/,
+      wrap: fun => {
+        if (fun.length === 3) {
+          return Bluebird.promisify(fun);
+        } else {
+          return fun;
         }
       }
-    })
-    .then(() => migrator)
-    .catch((e) => helpers.view.error(e));
+    }
+  })
+  .then(() => migrator)
+  .catch((e) => helpers.view.error(e));
 }
 
 export function ensureCurrentMetaSchema(migrator) {

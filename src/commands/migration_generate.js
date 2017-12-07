@@ -17,19 +17,19 @@ exports.handler = function (args) {
   helpers.init.createMigrationsFolder();
 
   fs.writeFileSync(
-    helpers.path.getMigrationPath(args.name),
+    helpers.path.getMigrationSourcePath(args.name),
     helpers.template.render(
       'migrations/skeleton.js',
       {},
       {
-        beautify: false,
+        beautify: false
       }
     )
   );
 
   helpers.view.log(
     'New migration was created at',
-    clc.blueBright(helpers.path.getMigrationPath(args.name)),
+    clc.blueBright(helpers.path.getMigrationSourcePath(args.name)),
     '.'
   );
 

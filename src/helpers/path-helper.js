@@ -51,11 +51,20 @@ module.exports = {
     return [basename, this.getFileExtension(options)].join('.');
   },
 
-  getMigrationPath(migrationName) {
-    return path.resolve(
-      this.getPath('migration'),
-      this.getFileName('migration', migrationName)
-    );
+  getMigrationSourcePath (migrationName) {
+    return path.resolve(this.getMigrationsSourcePath(), this.getFileName('migration', migrationName));
+  },
+
+  getMigrationCompiledPath (migrationName) {
+    return path.resolve(this.getMigrationsCompiledPath(), this.getFileName('migration', migrationName));
+  },
+
+  getMigrationsSourcePath() {
+    return args.migrationsSourcePath || path.resolve(process.cwd(), 'migrations');
+  },
+
+  getMigrationsCompiledPath() {
+    return args.migrationsCompiledPath || path.resolve(process.cwd(), 'migrations/compiled');
   },
 
   getSeederPath(seederName) {

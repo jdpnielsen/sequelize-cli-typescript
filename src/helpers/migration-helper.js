@@ -23,7 +23,7 @@ module.exports = {
 
   generateTableCreationFile(args) {
     const migrationName = this.generateMigrationName(args);
-    const migrationPath = helpers.path.getMigrationPath(migrationName);
+    const migrationPath = helpers.path.getMigrationSourcePath(migrationName);
 
     helpers.asset.write(
       migrationPath,

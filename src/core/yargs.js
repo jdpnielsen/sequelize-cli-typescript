@@ -34,10 +34,15 @@ export function _baseOptions(yargs) {
       describe: 'The path to a JSON file with additional options',
       type: 'string',
     })
-    .option('migrations-path', {
-      describe: 'The path to the migrations folder',
+    .option('migrations-source-path', {
+      describe: 'The path to the migrations (source) folder',
       default: 'migrations',
       type: 'string',
+    })
+    .option('migrations-compiled-path', {
+      describe: 'The path to the migrations (compiled) folder',
+      default: 'migrations/compiled',
+      type: 'string'
     })
     .option('seeders-path', {
       describe: 'The path to the seeders folder',
