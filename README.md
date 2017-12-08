@@ -1,6 +1,6 @@
 # sequelize/cli [![npm version](https://badge.fury.io/js/sequelize-cli.svg)](https://npmjs.com/package/sequelize-cli) [![Build Status](https://travis-ci.org/sequelize/cli.svg?branch=master)](https://travis-ci.org/sequelize/cli)
 
-The [Sequelize](https://sequelize.org) Command Line Interface (CLI)
+The Sequelize Command Line Interface (CLI) _for TypeScript_
 
 ## Table of Contents
 
@@ -10,7 +10,14 @@ The [Sequelize](https://sequelize.org) Command Line Interface (CLI)
 
 ## Installation
 
-Make sure you have [Sequelize](https://sequelize.org) installed. Then install the Sequelize CLI to be used in your project with
+### Globally
+Install CLI globally with
+
+```bash
+$ npm install -g sequelize-cli-typescript
+```
+
+Now you can run CLI using following command anywhere
 
 ```bash
 npm install --save-dev sequelize-cli
@@ -19,7 +26,7 @@ npm install --save-dev sequelize-cli
 And then you should be able to run the CLI with
 
 ```bash
-npx sequelize --help
+$ npm install --save sequelize-cli-typescript
 ```
 
 ### Usage
@@ -27,7 +34,28 @@ npx sequelize --help
 ```bash
 Sequelize CLI [Node: 10.21.0, CLI: 6.0.0, ORM: 6.1.0]
 
-sequelize <command>
+### Differences from Sequelize-Cli _(non-TypeScript)_
+
+With sequelize-cli, the ```model:generate``` command would produce _JavaScript_ files in two folders: 
+/models and /migrations, or other folders as specified in your .sequelizerc file.  The ```db:migrate``` 
+command would then exe ute these _JavaScript_ files to update your database.
+
+With sequelize-cli-typescript, ```model:generate``` produces _TypeScript_ files in the same two folders
+(or again, as specified in your .sequelizerc file).  But before you can run ```db:migrate``` you must
+compile your migrations.  (The step of compiling your migrations is left to you.)
+
+You could compile your migrations along with your other code, or as part of a separate script.  After you have compiled
+your migrations, then you can run ```db:migrate```.
+
+It's usually the case that the compiled _JavaScript_ code will be put in a different directory than
+the source _TypeScript_ code, so whereas sequelize-cli had one ```migrations-path``` setting, 
+sequelize-cli-typescript has two: ```migrations-source-path``` and ```migrations-compiled-path```, which
+default to /migrations and /migrations/compiled respectively.
+
+
+### Usage
+```
+Sequelize CLI [Node: 6.11.2, CLI: 3.0.0, ORM: 4.8.0]
 
 Commands:
   sequelize db:migrate                        Run pending migrations
