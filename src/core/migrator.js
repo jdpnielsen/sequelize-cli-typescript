@@ -43,6 +43,10 @@ export async function getMigrator(type, args) {
     migratorPath = helpers.path.getMigrationsCompiledPath();
   }
 
+  if ( type === 'seeder' ) {
+    migratorPath = helpers.path.getSeedersCompiledPath();
+  }
+
   const sequelize = getSequelizeInstance();
   const migrator = new Umzug({
     storage: helpers.umzug.getStorage(type),

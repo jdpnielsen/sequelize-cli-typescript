@@ -67,6 +67,10 @@ module.exports = {
     return args.migrationsCompiledPath || path.resolve(process.cwd(), 'migrations/compiled');
   },
 
+  getSeedersCompiledPath() {
+    return args.seedersCompiledPath || path.resolve(process.cwd(), 'seeders/compiled');
+  },
+
   getSeederPath(seederName) {
     return path.resolve(
       this.getPath('seeder'),
