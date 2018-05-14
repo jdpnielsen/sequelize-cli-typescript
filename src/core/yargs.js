@@ -41,7 +41,7 @@ export function _baseOptions(yargs) {
     })
     .option('migrations-compiled-path', {
       describe: 'The path to the migrations (compiled) folder',
-      default: 'migrations/compiled',
+      default: 'migrations',
       type: 'string'
     })
     .option('seeders-path', {
