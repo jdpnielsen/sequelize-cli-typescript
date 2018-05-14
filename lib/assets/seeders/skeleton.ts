@@ -1,6 +1,6 @@
 import { QueryInterface, SequelizeStatic } from 'sequelize';
 
-exports = {
+export = {
   up: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
     /*
       Add altering commands here.
