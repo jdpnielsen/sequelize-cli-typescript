@@ -44,7 +44,7 @@ const init = {
   },
 
   createSeedersFolder: (force) => {
-    createFolder('seeders', helpers.path.getPath('seeder'), force);
+    createFolder('seeders', helpers.path.getSeedersSourcePath(), force);
   },
 
   createModelsFolder: (force) => {

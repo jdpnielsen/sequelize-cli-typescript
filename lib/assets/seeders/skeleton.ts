@@ -1,11 +1,26 @@
 import { QueryInterface, SequelizeStatic } from 'sequelize';
 
 export = {
-	up: (queryInterface: QueryInterface, sequelize: SequelizeStatic) => {
+  up: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+    /*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
 
-	},
+      Example:
+      return queryInterface.bulkInsert('People', [{
+        name: 'John Doe',
+        isBetaMember: false
+      }], {});
+    */
+  },
 
-	down: (queryInterface: QueryInterface, sequelize: SequelizeStatic) => {
+  down: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
 
-	}
+      Example:
+      return queryInterface.bulkDelete('People', null, {});
+    */
+  }
 };

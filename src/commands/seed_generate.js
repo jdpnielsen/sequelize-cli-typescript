@@ -15,7 +15,7 @@ exports.handler = function (args) {
   helpers.init.createSeedersFolder();
 
   fs.writeFileSync(
-    helpers.path.getSeederPath(args.name),
+    helpers.path.getSeederSourcePath(args.name),
     helpers.template.render(
       'seeders/skeleton.ts',
       {},
@@ -27,7 +27,7 @@ exports.handler = function (args) {
 
   helpers.view.log(
     'New seed was created at',
-    clc.blueBright(helpers.path.getSeederPath(args.name)),
+    clc.blueBright(helpers.path.getSeederSourcePath(args.name)),
     '.'
   );
 

@@ -44,8 +44,13 @@ export function _baseOptions(yargs) {
       default: 'migrations/compiled',
       type: 'string'
     })
-    .option('seeders-path', {
-      describe: 'The path to the seeders folder',
+    .option('seeders-compiled-path', {
+      describe: 'The path to the seeders (compiled) folder',
+      default: 'seeders/compiled',
+      type: 'string'
+    })
+    .option('seeders-source-path', {
+      describe: 'The path to the seeders (source) folder',
       default: 'seeders',
       type: 'string',
     })
