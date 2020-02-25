@@ -15,7 +15,7 @@
     "js-beautify": "^1.8.8",
     "lodash": "^4.17.5",
     "resolve": "^1.5.0",
-    "umzug": "https://github.com/wildcookie007/umzug",
+    "umzug": "https://github.com/wildcookie007/umzug#typescript-runtime",
     "yargs": "^15.0.0"
   },
   "devDependencies": {
