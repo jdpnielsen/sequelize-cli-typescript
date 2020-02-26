@@ -1,4 +1,14 @@
-# sequelize/cli [![npm version](https://badge.fury.io/js/sequelize-cli.svg)](https://npmjs.com/package/sequelize-cli) [![Build Status](https://travis-ci.org/sequelize/cli.svg?branch=master)](https://travis-ci.org/sequelize/cli)
+# Fork
+
+This repository was forked to allow having a compiled folder for migrations and seeders.
+
+By setting up local scripts you are able to compile `.ts` -> `.js` migrations within your Sequelize's configuration folders and run them as usual.
+
+I have extended this functionallity to allow migrating typescript in runtime - meaning you are not required to compile `.ts` down to `.js` anymore. Run your migrations as usual.
+
+Be sure that your Sequelize compiled path for migrations and seeders point to a correct location.
+
+# sequelize/cli [![npm version](https://badge.fury.io/js/sequelize-cli.svg)](https://badge.fury.io/js/sequelize-cli) [![Build Status](https://travis-ci.org/sequelize/cli.svg?branch=master)](https://travis-ci.org/sequelize/cli) [![Greenkeeper badge](https://badges.greenkeeper.io/sequelize/cli.svg)](https://greenkeeper.io/)
 
 The Sequelize Command Line Interface (CLI) _for TypeScript_
 
