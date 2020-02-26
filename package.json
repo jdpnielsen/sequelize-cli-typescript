@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/douglas-treadwell/sequelize-cli-typescript.git"
+    "url": "git://github.com/wildcookie007/sequelize-cli-typescript.git"
   },
   "keywords": [
     "sequelize",
@@ -87,9 +87,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/douglas-treadwell/sequelize-cli-typescript/issues"
+    "url": "https://github.com/wildcookie007/sequelize-cli-typescript/issues"
   },
-  "homepage": "https://github.com/douglas-treadwell/sequelize-cli-typescript",
+  "homepage": "https://github.com/wildcookie007/sequelize-cli-typescript",
   "engines": {
     "node": ">=10.0.0"
   }
