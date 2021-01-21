@@ -22,7 +22,7 @@ exports.handler = function (args) {
       'migrations/skeleton.ts',
       {},
       {
-        beautify: false
+        beautify: false,
       }
     )
   );

@@ -39,7 +39,7 @@ function createFolder(folderName, folder, force) {
 }
 
 const init = {
-  createMigrationsFolder: force => {
+  createMigrationsFolder: (force) => {
     createFolder('migrations', helpers.path.getMigrationsSourcePath(), force);
   },
 

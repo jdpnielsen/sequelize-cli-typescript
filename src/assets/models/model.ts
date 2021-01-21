@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize, Model, DataTypes } from 'sequelize';
 
 <%
   function getType(dataType) {
@@ -54,14 +54,28 @@ export interface <%= name[0].toUpperCase() + name.substr(1) %>Instance {
   }) %>
 }
 
-export = (sequelize: Sequelize, DataTypes: DataTypes) => {
-  var <%= name %> = sequelize.define('<%= name %>', {
-    <% attributes.forEach(function(attribute, index) { %><%= attribute.fieldName %>: DataTypes.<%= attribute.dataFunction ? `${attribute.dataFunction.toUpperCase()}(DataTypes.${attribute.dataType.toUpperCase()})` : attribute.dataType.toUpperCase() %><%= (Object.keys(attributes).length - 1) > index ? ',' : '' %><% }) %>
-  }<%= underscored ? ', { underscored: true }' : '' %>);
+export default (sequelize: Sequelize, dataTypes: typeof DataTypes) => {
+  class <%= name[0].toUpperCase() + name.substr(1) %> extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate (models: {[key: string]: Model}) {
+      // define association here
+    }
+  }
 
-  <%= name %>.associate = function(models) {
-    // associations can be defined here
-  };
+  <%= name[0].toUpperCase() + name.substr(1) %>.init({
+    <% attributes.forEach(function(attribute, index) { %>
+      <%= attribute.fieldName %>: dataTypes.<%= attribute.dataFunction ? `${attribute.dataFunction.toUpperCase()}(dataTypes.${attribute.dataType.toUpperCase()})` : attribute.dataValues ? `${attribute.dataType.toUpperCase()}(${attribute.dataValues})` : attribute.dataType.toUpperCase() %>
+      <%= (Object.keys(attributes).length - 1) > index ? ',' : '' %>
+    <% }) %>
+  }, {
+    sequelize,
+    modelName: '<%= name %>',
+    <%= underscored ? 'underscored: true,' : '' %>
+  })
 
-  return <%= name %>;
-};
+  return <%= name[0].toUpperCase() + name.substr(1) %>
+}

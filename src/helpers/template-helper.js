@@ -10,7 +10,7 @@ module.exports = {
         indent_size: 2,
         preserve_newlines: true,
         max_preserve_newlines: 2,
-        end_with_newline: true
+        end_with_newline: true,
       },
       options || {}
     );

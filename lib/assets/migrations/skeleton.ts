@@ -1,11 +1,21 @@
-import { QueryInterface, SequelizeStatic } from 'sequelize';
+import { QueryInterface, Sequelize } from 'sequelize';
 
 export = {
-	up: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  up: async (queryInterface: QueryInterface, sequelize: Sequelize) => {
+    /*
+      Add altering commands here.
 
-	},
+      Example:
+      await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+    */
+  },
 
-	down: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  down: async (queryInterface: QueryInterface, sequelize: Sequelize) => {
+    /*
+      Add reverting commands here.
 
-	}
+      Example:
+      await queryInterface.dropTable('users');
+    */
+  }
 };

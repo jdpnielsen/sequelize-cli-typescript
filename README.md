@@ -8,8 +8,6 @@ I have extended this functionallity to allow migrating typescript in runtime - m
 
 Be sure that your Sequelize compiled path for migrations and seeders point to a correct location.
 
-# sequelize/cli [![npm version](https://badge.fury.io/js/sequelize-cli.svg)](https://badge.fury.io/js/sequelize-cli) [![Build Status](https://travis-ci.org/sequelize/cli.svg?branch=master)](https://travis-ci.org/sequelize/cli) [![Greenkeeper badge](https://badges.greenkeeper.io/sequelize/cli.svg)](https://greenkeeper.io/)
-
 The Sequelize Command Line Interface (CLI) _for TypeScript_
 
 ## Table of Contents
@@ -24,19 +22,26 @@ The Sequelize Command Line Interface (CLI) _for TypeScript_
 Install CLI globally with
 
 ```bash
-$ npm install -g sequelize-cli-typescript
+$ npm install -g @jdpnielsen/sequelize-cli-typescript
 ```
 
 Now you can run CLI using following command anywhere
 
 ```bash
-npm install --save-dev sequelize-cli
+sequelize-ts
 ```
 
-And then you should be able to run the CLI with
+### Locally
+Install CLI locally to your `node_modules` folder with
 
 ```bash
-$ npm install --save sequelize-cli-typescript
+$ npm install --save @jdpnielsen/sequelize-cli-typescript
+```
+
+You should be able to run CLI with
+
+```bash
+$ node_modules/.bin/sequelize-ts
 ```
 
 ### Usage
@@ -68,25 +73,25 @@ default to /migrations and /migrations/compiled respectively.
 Sequelize CLI [Node: 6.11.2, CLI: 3.0.0, ORM: 4.8.0]
 
 Commands:
-  sequelize db:migrate                        Run pending migrations
-  sequelize db:migrate:schema:timestamps:add  Update migration table to have timestamps
-  sequelize db:migrate:status                 List the status of all migrations
-  sequelize db:migrate:undo                   Reverts a migration
-  sequelize db:migrate:undo:all               Revert all migrations ran
-  sequelize db:seed                           Run specified seeder
-  sequelize db:seed:undo                      Deletes data from the database
-  sequelize db:seed:all                       Run every seeder
-  sequelize db:seed:undo:all                  Deletes data from the database
-  sequelize db:create                         Create database specified by configuration
-  sequelize db:drop                           Drop database specified by configuration
-  sequelize init                              Initializes project
-  sequelize init:config                       Initializes configuration
-  sequelize init:migrations                   Initializes migrations
-  sequelize init:models                       Initializes models
-  sequelize init:seeders                      Initializes seeders
-  sequelize migration:generate                Generates a new migration file      [aliases: migration:create]
-  sequelize model:generate                    Generates a model and its migration [aliases: model:create]
-  sequelize seed:generate                     Generates a new seed file           [aliases: seed:create]
+  sequelize-ts db:migrate                        Run pending migrations
+  sequelize-ts db:migrate:schema:timestamps:add  Update migration table to have timestamps
+  sequelize-ts db:migrate:status                 List the status of all migrations
+  sequelize-ts db:migrate:undo                   Reverts a migration
+  sequelize-ts db:migrate:undo:all               Revert all migrations ran
+  sequelize-ts db:seed                           Run specified seeder
+  sequelize-ts db:seed:undo                      Deletes data from the database
+  sequelize-ts db:seed:all                       Run every seeder
+  sequelize-ts db:seed:undo:all                  Deletes data from the database
+  sequelize-ts db:create                         Create database specified by configuration
+  sequelize-ts db:drop                           Drop database specified by configuration
+  sequelize-ts init                              Initializes project
+  sequelize-ts init:config                       Initializes configuration
+  sequelize-ts init:migrations                   Initializes migrations
+  sequelize-ts init:models                       Initializes models
+  sequelize-ts init:seeders                      Initializes seeders
+  sequelize-ts migration:generate                Generates a new migration file      [aliases: migration:create]
+  sequelize-ts model:generate                    Generates a model and its migration [aliases: model:create]
+  sequelize-ts seed:generate                     Generates a new seed file           [aliases: seed:create]
 
 Options:
   --version  Show version number                                                  [boolean]

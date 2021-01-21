@@ -42,12 +42,12 @@ export function _baseOptions(yargs) {
     .option('migrations-compiled-path', {
       describe: 'The path to the migrations (compiled) folder',
       default: 'migrations/compiled',
-      type: 'string'
+      type: 'string',
     })
     .option('seeders-compiled-path', {
       describe: 'The path to the seeders (compiled) folder',
       default: 'seeders/compiled',
-      type: 'string'
+      type: 'string',
     })
     .option('seeders-source-path', {
       describe: 'The path to the seeders (source) folder',

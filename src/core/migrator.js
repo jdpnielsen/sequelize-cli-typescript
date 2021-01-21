@@ -1,6 +1,6 @@
 import Umzug from 'umzug';
 import _ from 'lodash';
-
+import Bluebird from 'bluebird';
 import helpers from '../helpers/index';
 
 const Sequelize = helpers.generic.getSequelize();
@@ -39,11 +39,11 @@ export async function getMigrator(type, args) {
 
   let migratorPath = helpers.path.getPath(type);
 
-  if ( type === 'migration' ) {
+  if (type === 'migration') {
     migratorPath = helpers.path.getMigrationsCompiledPath();
   }
 
-  if ( type === 'seeder' ) {
+  if (type === 'seeder') {
     migratorPath = helpers.path.getSeedersCompiledPath();
   }
 
@@ -56,17 +56,17 @@ export async function getMigrator(type, args) {
       params: [sequelize.getQueryInterface(), Sequelize],
       path: migratorPath,
       pattern: /\.[jt]s$/,
-      wrap: fun => {
+      wrap: (fun) => {
         if (fun.length === 3) {
           return Bluebird.promisify(fun);
         } else {
           return fun;
         }
-      }
-    }
+      },
+    },
   })
-  .then(() => migrator)
-  .catch((e) => helpers.view.error(e));
+    .then(() => migrator)
+    .catch((e) => helpers.view.error(e));
 }
 
 export function ensureCurrentMetaSchema(migrator) {

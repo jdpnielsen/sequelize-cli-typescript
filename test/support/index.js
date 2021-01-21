@@ -236,7 +236,10 @@ var Support = {
   },
 
   getCliPath: function (cwd) {
-    return path.resolve(cwd, path.resolve(process.cwd(), 'lib', 'sequelize'));
+    return path.resolve(
+      cwd,
+      path.resolve(process.cwd(), 'lib', 'sequelize-ts')
+    );
   },
 
   getCliCommand: function (cwd, flags) {

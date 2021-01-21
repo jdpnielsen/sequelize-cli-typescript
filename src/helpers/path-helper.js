@@ -43,7 +43,7 @@ module.exports = {
     );
   },
 
-  getFileExtension () {
+  getFileExtension() {
     return 'ts';
   },
 
@@ -51,28 +51,45 @@ module.exports = {
     return [basename, this.getFileExtension(options)].join('.');
   },
   // migrations
-  getMigrationSourcePath (migrationName) {
-    return path.resolve(this.getMigrationsSourcePath(), this.getFileName('migration', migrationName));
+  getMigrationSourcePath(migrationName) {
+    return path.resolve(
+      this.getMigrationsSourcePath(),
+      this.getFileName('migration', migrationName)
+    );
   },
 
-  getMigrationCompiledPath (migrationName) {
-    return path.resolve(this.getMigrationsCompiledPath(), this.getFileName('migration', migrationName));
+  getMigrationCompiledPath(migrationName) {
+    return path.resolve(
+      this.getMigrationsCompiledPath(),
+      this.getFileName('migration', migrationName)
+    );
   },
 
   getMigrationsSourcePath() {
-    return args.migrationsSourcePath || path.resolve(process.cwd(), 'migrations');
+    return (
+      args.migrationsSourcePath || path.resolve(process.cwd(), 'migrations')
+    );
   },
 
   getMigrationsCompiledPath() {
-    return args.migrationsCompiledPath || path.resolve(process.cwd(), 'migrations/compiled');
+    return (
+      args.migrationsCompiledPath ||
+      path.resolve(process.cwd(), 'migrations/compiled')
+    );
   },
   // seeders
   getSeederSourcePath(seederName) {
-    return path.resolve(this.getSeedersSourcePath(), this.getFileName('seeder', seederName));
+    return path.resolve(
+      this.getSeedersSourcePath(),
+      this.getFileName('seeder', seederName)
+    );
   },
 
   getSeederCompiledPath(seederName) {
-    return path.resolve(this.getSeedersCompiledPath(), this.getFileName('seeder', seederName));
+    return path.resolve(
+      this.getSeedersCompiledPath(),
+      this.getFileName('seeder', seederName)
+    );
   },
 
   getSeedersSourcePath() {
@@ -80,7 +97,10 @@ module.exports = {
   },
 
   getSeedersCompiledPath() {
-    return args.seedersCompiledPath || path.resolve(process.cwd(), 'seeders/compiled');
+    return (
+      args.seedersCompiledPath ||
+      path.resolve(process.cwd(), 'seeders/compiled')
+    );
   },
   //
 

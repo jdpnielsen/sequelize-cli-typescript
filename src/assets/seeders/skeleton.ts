@@ -1,7 +1,7 @@
-import { QueryInterface, SequelizeStatic } from 'sequelize';
+import { QueryInterface, Sequelize } from 'sequelize';
 
 exports = {
-  up: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  up: async (queryInterface: QueryInterface, sequelize: Sequelize) => {
     /**
      * Add seed commands here.
      *
@@ -13,7 +13,7 @@ exports = {
     */
   },
 
-  down: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  down: async (queryInterface: QueryInterface, sequelize: Sequelize) => {
     /**
      * Add commands to revert seed here.
      *

@@ -20,7 +20,7 @@ exports.handler = function (args) {
       'seeders/skeleton.ts',
       {},
       {
-        beautify: false
+        beautify: false,
       }
     )
   );
