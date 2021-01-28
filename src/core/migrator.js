@@ -1,7 +1,7 @@
 import Umzug from 'umzug';
 import _ from 'lodash';
 import Bluebird from 'bluebird';
-import helpers from '../helpers/index';
+import helpers from '../helpers';
 
 const Sequelize = helpers.generic.getSequelize();
 
@@ -29,44 +29,63 @@ function getSequelizeInstance() {
   }
 }
 
-export async function getMigrator(type, args) {
-  if (!(helpers.config.configFileExists() || args.url)) {
-    helpers.view.error(
-      `Cannot find "${helpers.config.getConfigFile()}". Have you run "sequelize init"?`
-    );
-    process.exit(1);
-  }
+export function getMigrator(type, args) {
+  return Bluebird.try(() => {
+    if (!(helpers.config.configFileExists() || args.url)) {
+      helpers.view.error(
+        'Cannot find "' +
+          helpers.config.getConfigFile() +
+          '". Have you run "sequelize init"?'
+      );
+      process.exit(1);
+    }
 
-  let migratorPath = helpers.path.getPath(type);
+    let migratorPath = helpers.path.getPath(type);
 
-  if (type === 'migration') {
-    migratorPath = helpers.path.getMigrationsCompiledPath();
-  }
+    if (type === 'migration') {
+      migratorPath = helpers.path.getMigrationsCompiledPath();
+    }
 
-  if (type === 'seeder') {
-    migratorPath = helpers.path.getSeedersCompiledPath();
-  }
+    if (type === 'seeder') {
+      migratorPath = helpers.path.getSeedersCompiledPath();
+    }
 
-  const sequelize = getSequelizeInstance();
-  const migrator = new Umzug({
-    storage: helpers.umzug.getStorage(type),
-    storageOptions: helpers.umzug.getStorageOptions(type, { sequelize }),
-    logging: helpers.view.log,
-    migrations: {
-      params: [sequelize.getQueryInterface(), Sequelize],
-      path: migratorPath,
-      pattern: /\.[jt]s$/,
-      wrap: (fun) => {
-        if (fun.length === 3) {
-          return Bluebird.promisify(fun);
-        } else {
-          return fun;
-        }
+    const sequelize = getSequelizeInstance();
+    const migrator = new Umzug({
+      storage: helpers.umzug.getStorage(type),
+      storageOptions: helpers.umzug.getStorageOptions(type, { sequelize }),
+      logging: helpers.view.log,
+      migrations: {
+        params: [sequelize.getQueryInterface(), Sequelize],
+        path: migratorPath,
+        pattern: /\.[jt]s$/,
+        wrap: (fun) => {
+          if (fun.length === 3) {
+            return Bluebird.promisify(fun);
+          } else {
+            return fun;
+          }
+        },
       },
-    },
-  })
-    .then(() => migrator)
-    .catch((e) => helpers.view.error(e));
+    });
+
+    return sequelize
+      .authenticate()
+      .then(() => {
+        // Check if this is a PostgreSQL run and if there is a custom schema specified, and if there is, check if it's
+        // been created. If not, attempt to create it.
+        if (helpers.version.getDialectName() === 'pg') {
+          const customSchemaName = helpers.umzug.getSchema('migration');
+          if (customSchemaName && customSchemaName !== 'public') {
+            return sequelize.createSchema(customSchemaName);
+          }
+        }
+
+        return Bluebird.resolve();
+      })
+      .then(() => migrator)
+      .catch((e) => helpers.view.error(e));
+  });
 }
 
 export function ensureCurrentMetaSchema(migrator) {
